@@ -58,7 +58,9 @@ when 'centos', 'redhat', 'fedora', 'amazon', 'scientific', 'oracle'
   default['tomcat']['webapp_dir'] = "/var/lib/tomcat#{node["tomcat"]["base_version"]}/webapps"
 
   default['tomcat']['keytool'] = value_for_platform(
-    %w(amazon) => "keytool6",
+    %w(amazon) => {
+        'default' => "keytool6"
+    },
     %w(redhat, centos) => {
         '6' => "keytool6",
         'default' => "keytool"
